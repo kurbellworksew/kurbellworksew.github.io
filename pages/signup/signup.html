@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="../assets/css/signup_style.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Sign Up</title>
+	<script>
+		function showPassword() {
+			"use strict"
+
+			if (document.getElementById('userPassword').type == 'text') {
+				document.getElementById('userPassword').type = 'password';
+				document.getElementById('rep-userPassword').type = 'password';
+			} else {
+				document.getElementById('userPassword').type = 'text';
+				document.getElementById('rep-userPassword').type = 'text';
+			}
+
+		}
+
+		function checkPassowrdMatch() {
+			"use strict"
+
+			var isvalid = true;
+
+			if (document.getElementById("rep-userPassword").value != document.getElementById("userPassword").value) {
+				document.getElementById("userPassword").style.borderColor = "red";
+				document.getElementById("userPassword").style.backgroundColor = 'pink';
+				document.getElementById("rep-userPassword").style.borderColor = "red";
+				document.getElementById("rep-userPassword").style.backgroundColor = 'pink';
+				document.getElementById("error").style.display = "block"
+				document.getElementById("error").innerHTML = "Passwords do not match";
+				isvalid = false;
+			} else {
+				document.getElementById("userPassword").style = null;
+				document.getElementById("rep-userPassword").style = null;
+			}
+			return isvalid;
+		}
+
+		function validateForm() {
+			"use strict"
+
+			var isvalid = true;
+
+			if (document.getElementById("userFirstName").value == '') {
+				document.getElementById("userFirstName").style.borderColor = "red";
+				document.getElementById("userFirstName").style.backgroundColor = 'pink';
+				isvalid = false;
+			} else {
+				document.getElementById("userFirstName").style = null;
+			}
+			if (document.getElementById("userLastName").value == '') {
+				document.getElementById("userLastName").style.borderColor = "red";
+				document.getElementById("userLastName").style.backgroundColor = 'pink';
+				isvalid = false;
+			} else {
+				document.getElementById("userLastName").style = null;
+			}
+			if (document.getElementById("userEmail").value == '') {
+				document.getElementById("userEmail").style.borderColor = "red";
+				document.getElementById("userEmail").style.backgroundColor = 'pink';
+				isvalid = false;
+			} else {
+				document.getElementById("userEmail").style = null;
+			}
+			if (document.getElementById("userPassword").value == '') {
+				document.getElementById("userPassword").style.borderColor = "red";
+				document.getElementById("userPassword").style.backgroundColor = 'pink';
+				isvalid = false;
+			} else {
+				document.getElementById("userPassword").style = null;
+			}
+			return (isvalid && checkPassowrdMatch());
+		}
+
+	</script>
+</head>
+
+<body>
+	<div class="navbar" id="myNavBar">
+		<img class="logo" alt="Worksew Logo" src="../../assets/images/logo_optimized.png" width="100">
+		<div class="floatNav">
+			<a href="index.html">Sign In</a>
+			<a href="index.html" class="active">Sign up</a>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="card">
+		<div class="formTitle">Take the first step to a new job</div>
+		<p id="error"></p>
+		<br><br>
+		<hr>
+		<form action="#" method="POST" onsubmit="return validateForm();">
+			<div class="formContainer">
+				<div class="centerTextFormBox">
+					First&nbsp;Name:&nbsp;<br><input type="text" id="userFirstName" class="formBoxDesign" name="userFirstName" placeholder="Required Entry"><span class="asterisk">*</span><br>
+					Last&nbsp;Name:&nbsp;<br><input type="text" id="userLastName" class="formBoxDesign" name="userLastName" placeholder="Required Entry"><span class="asterisk">*</span><br>
+					Email:<br><input type="text" id="userEmail" class="formBoxDesign" name="userEmail" placeholder="Required Entry"><span class="asterisk">*</span><br>
+					Password:<br><input type="password" id="userPassword" class="formBoxDesign" name="userPassword" placeholder="Required Entry"><span class="asterisk">*</span><br>
+					Repeat Password:<br><input type="password" id="rep-userPassword" class="formBoxDesign" name="userPassword" placeholder="Required Entry"><span class="asterisk">*</span><br>
+					<button class="showPadding" onclick="showPassword()">Show</button>
+					<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+					<button type="submit" class="registerbtn">Register</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+</body>
+
+</html>

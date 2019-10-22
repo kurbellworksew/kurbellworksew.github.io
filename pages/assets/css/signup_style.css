@@ -1,0 +1,157 @@
+body {
+	background-image: url(../images/signup/signup_background_optimized.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.navbar {
+	margin: -.5em;
+	padding: 15px 0;
+	overflow: hidden;
+	position: fixed;
+	width: 100%;
+	background-color: #151515;
+
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: #fff;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+.navbar a:hover {
+	border-radius: 16px;
+	background-color: #FFDF00;
+	color: #000000;
+}
+
+.navbar a.active {
+	border-radius: 16px;
+	background-color: #FFDF00;
+	color: #000000;
+}
+
+.navbar .icon {
+	display: none;
+}
+
+.floatNav {
+	float: right;
+	padding-right: 5em;
+}
+
+.logo {
+	padding-left: 2em;
+}
+
+
+.card {
+	border-radius: 16px;
+	position: relative;
+	overflow: hidden;
+	z-index: -1;
+	padding: 1em;
+	margin-top: 15%;
+	margin-left: 30%;
+	margin-right: 30%;
+	background: rgba(0, 0, 0, 0.65);
+}
+
+.formTitle {
+	text-align: center;
+	color: #fff;
+	font-weight: bold;
+	float: left;
+	font-size: 1.8em;
+}
+
+.formContainer {
+	color: #fff;
+	font-size: 1em;
+}
+
+.formBoxDesign {
+	box-sizing: border-box;
+	border: 1px solid rgb(227, 227, 227);
+	background-color: rgb(255, 255, 255);
+	border-radius: 16px;
+	color: rgb(0, 0, 0);
+	line-height: 1;
+	padding: 8px 16px;
+	transition: border-color 200ms ease 0s, box-shadow 200ms ease 0s;
+}
+
+.centerTextFormBox {
+	text-align: center;
+}
+
+.asterisk {
+	color: #FF0000;
+}
+
+#error {
+	display: none;
+}
+
+.showPadding {
+	margin-top: 0.5em;
+}
+
+.registerbtn {
+  background-color: #FFDF00;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.8;
+}
+
+.registerbtn:hover {
+  opacity:1;
+}
+
+@media (max-width: 480px) {
+	.card {
+		margin-top: 50vw;
+		margin-left: 10vw;
+		margin-right: 10vw;
+	}
+}
+
+@media screen and (max-width: 1117px) {
+	.navbar a:not(:first-child) {
+		display: none;
+	}
+
+	.navbar a.icon {
+		float: right;
+		display: block;
+	}
+}
+
+@media screen and (max-width: 1117px) {
+	.navbar.responsive {
+		position: relative;
+	}
+
+	.navbar.responsive a.icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	.navbar.responsive a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+}
