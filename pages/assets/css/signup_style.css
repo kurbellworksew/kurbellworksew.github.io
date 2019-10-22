@@ -1,9 +1,9 @@
 body {
 	background-image: url(../images/signup/signup_background_optimized.jpg);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 }
 
 .navbar {
@@ -54,7 +54,6 @@ body {
 
 .card {
 	border-radius: 16px;
-	position: relative;
 	overflow: hidden;
 	z-index: -1;
 	padding: 1em;
@@ -105,18 +104,18 @@ body {
 }
 
 .registerbtn {
-  background-color: #FFDF00;
-  color: white;
-  padding: 16px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.8;
+	background-color: #FFDF00;
+	color: white;
+	padding: 16px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+	opacity: 0.8;
 }
 
 .registerbtn:hover {
-  opacity:1;
+	opacity: 1;
 }
 
 @media (max-width: 480px) {
