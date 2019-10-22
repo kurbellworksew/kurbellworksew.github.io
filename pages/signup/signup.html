@@ -8,10 +8,144 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>Sign Up</title>
+	
+</head>
+
+<body>
+	<div class="navbar" id="myNavBar">
+		<img class="logo" alt="Worksew Logo" src="../../assets/images/logo_optimized.png" width="100">
+		<div class="floatNav">
+			<a href="index.html">Sign In</a>
+			<a href="index.html" class="active">Sign up</a>
+			<a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
+		</div>
+	</div>
+
+	<br>
+
+	<div class="card">
+		<div class="formTitle">Take the first step to a new job</div>
+		<p id="error"></p>
+		<br><br>
+		<hr>
+		<form id="regForm" method="post" action="">
+
+			<div class="tab">
+				<div class="formContainer">
+					<div class="centerTextFormBox">
+						First&nbsp;Name:&nbsp;<br><input type="text" id="userFirstName" class="formBoxDesign" name="userFirstName" placeholder="Required Entry"><span class="asterisk">*</span><br>
+						Last&nbsp;Name:&nbsp;<br><input type="text" id="userLastName" class="formBoxDesign" name="userLastName" placeholder="Required Entry"><span class="asterisk">*</span><br>
+						Email:<br><input type="text" id="userEmail" class="formBoxDesign" name="userEmail" placeholder="Required Entry"><span class="asterisk">*</span><br>
+						Password:<br><input type="password" id="userPassword" class="formBoxDesign" name="userPassword" placeholder="Required Entry"><span class="asterisk">*</span><br>
+						Repeat Password:<br><input type="password" id="rep-userPassword" class="formBoxDesign" name="rep-userPassword" placeholder="Required Entry"><span class="asterisk">*</span><br>
+						<button type="button" class="showPasswordBtnPadding" onclick="showPassword()">Show</button>
+						<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab">
+				<div class="formContainer">
+					<div class="centerTextFormBox">
+						Birth&nbsp;Date:&nbsp;<br><input type="date" id="birthDate" class="formBoxDesign" name="birthDate" placeholder="Required Entry"><span class="asterisk">*</span><br>
+
+						Gender:&nbsp;<br>
+						<select id="userGender" name="userGender" class="formBoxDesign">
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+						</select><span class="asterisk">*</span><br>
+
+						Address:<br><input type="text" id="userAddress" class="formBoxDesign" name="userAddress" placeholder="Required Entry"><span class="asterisk">*</span><br>
+
+						School:<br><input type="password" id="userSchool" class="formBoxDesign" name="userSchool" placeholder="Required Entry"><span class="asterisk">*</span><br>
+
+						Goverment ID:<br>
+						<form action="upload.php" method="post" enctype="multipart/form-data">
+							<input type="file" name="fileToUpload" id="fileToUpload">
+							<input type="submit" value="Upload Image" name="submit">
+						</form>
+
+						<span class="asterisk">*</span><br>
+
+						<p>By cliking "Process" you agree to let our team request your transcript from your school on your behalf <a href="#">Transcript Acquisition Agreement </a>.</p>
+<!--						<button type="submit" class="registerbtn">Process</button>-->
+					</div>
+				</div>
+			</div>
+
+			<div style="overflow:auto;">
+				<div style="float:right;">
+					<button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+					<button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+				</div>
+			</div>
+
+			<!-- Circles which indicates the steps of the form: -->
+			<div style="text-align:center;margin-top:40px;">
+				<span class="step"></span>
+				<span class="step"></span>
+			</div>
+		</form>
+	</div>
+
+
+
+</body>
 	<script>
+		var currentTab = 0; // Current tab is set to be the first tab (0)
+		showTab(currentTab); // Display the current tab
+
+		function showTab(n) {
+			// This function will display the specified tab of the form ...
+			var x = document.getElementsByClassName("tab")[n];
+			x.style.display = "block";
+			// ... and fix the Previous/Next buttons:
+			if (n == 0) {
+				document.getElementById("prevBtn").style.display = "none";
+			} else {
+				document.getElementById("prevBtn").style.display = "inline";
+			}
+			if (n == (x.length - 1)) {
+				document.getElementById("nextBtn").innerHTML = "Submit";
+			} else {
+				document.getElementById("nextBtn").innerHTML = "Next";
+			}
+			// ... and run a function that displays the correct step indicator:
+			fixStepIndicator(n)
+		}
+
+		function nextPrev(n) {
+			// This function will figure out which tab to display
+			var x = document.getElementsByClassName("tab");
+			// Exit the function if any field in the current tab is invalid:
+			if (n == 1 && !validateForm()) return false;
+			// Hide the current tab:
+			x[currentTab].style.display = "none";
+			// Increase or decrease the current tab by 1:
+			currentTab = currentTab + n;
+			// if you have reached the end of the form... :
+			if (currentTab >= x.length) {
+				//...the form gets submitted:
+				document.getElementById("regForm").submit();
+				return false;
+			}
+			// Otherwise, display the correct tab:
+			showTab(currentTab);
+		}
+
+
+		function fixStepIndicator(n) {
+			// This function removes the "active" class of all steps...
+			var i, x = document.getElementsByClassName("step");
+			for (i = 0; i < x.length; i++) {
+				x[i].className = x[i].className.replace(" active", "");
+			}
+			//... and adds the "active" class to the current step:
+			x[n].className += " active";
+		}
+
 		function showPassword() {
 			"use strict"
-
 			if (document.getElementById('userPassword').type == 'text') {
 				document.getElementById('userPassword').type = 'password';
 				document.getElementById('rep-userPassword').type = 'password';
@@ -75,43 +209,20 @@
 			} else {
 				document.getElementById("userPassword").style = null;
 			}
+
 			return (isvalid && checkPassowrdMatch());
 		}
+
+	
+		function myFunction() {
+			var x = document.getElementById("myNavBar");
+			if (x.className === "navbar") {
+				x.className += " responsive";
+			} else {
+				x.className = "navbar";
+			}
+		}
 	</script>
-</head>
-
-<body>
-	<div class="navbar" id="myNavBar">
-		<img class="logo" alt="Worksew Logo" src="../../assets/images/logo_optimized.png" width="100">
-		<div class="floatNav">
-			<a href="index.html">Sign In</a>
-			<a href="index.html" class="active">Sign up</a>
-			<a href="javascript:void(0);" class="icon" onclick="myFunction()"><i class="fa fa-bars"></i></a>
-		</div>
-	</div>
-
-	<br>
-
-	<div class="card">
-		<div class="formTitle">Take the first step to a new job</div>
-		<p id="error"></p>
-		<br><br>
-		<hr>
-		<form action="#" method="POST" onsubmit="return validateForm();">
-			<div class="formContainer">
-				<div class="centerTextFormBox">
-					First&nbsp;Name:&nbsp;<br><input type="text" id="userFirstName" class="formBoxDesign" name="userFirstName" placeholder="Required Entry"><span class="asterisk">*</span><br>
-					Last&nbsp;Name:&nbsp;<br><input type="text" id="userLastName" class="formBoxDesign" name="userLastName" placeholder="Required Entry"><span class="asterisk">*</span><br>
-					Email:<br><input type="text" id="userEmail" class="formBoxDesign" name="userEmail" placeholder="Required Entry"><span class="asterisk">*</span><br>
-					Password:<br><input type="password" id="userPassword" class="formBoxDesign" name="userPassword" placeholder="Required Entry"><span class="asterisk">*</span><br>
-					Repeat Password:<br><input type="password" id="rep-userPassword" class="formBoxDesign" name="userPassword" placeholder="Required Entry"><span class="asterisk">*</span><br>
-					<button class="showPadding" onclick="showPassword()">Show</button>
-					<p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-					<button type="submit" class="registerbtn">Register</button>
-				</div>
-			</div>
-		</form>
-	</div>
 
 
-</body></html>
+</html>
