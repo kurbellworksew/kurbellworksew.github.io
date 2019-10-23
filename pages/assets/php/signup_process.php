@@ -15,7 +15,15 @@ if(!empty($_POST['userFirstName']) && !empty($_POST['userLastName'])){
 	
 	$userPassword = check_input($_POST['userPassword']);
 	
-	$userFullName = "$userFirstName $userLastName";
+	$birthDate = check_input($_POST['birthDate']);
+	
+	$userGender = check_input($_POST['userGender']);
+	
+	$userAddress = check_input($_POST['userAddress']);
+	
+	$userSchool = check_input($_POST['userSchool']);
+	
+	$fileToUpload = check_input($_POST['fileToUpload']);
 
 
 }
